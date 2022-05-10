@@ -7,8 +7,9 @@ CREATE TABLE users_db.User
     prenom VARCHAR(100),
     date_naissance VARCHAR(30),
     email VARCHAR(255),
-    numero_Telephone VARCHAR(30), 
+    tel_num VARCHAR(30),
     id_remboursement INT,
     code_soin VARCHAR(6), 
-    montant_remboursement FLOAT
+    montant_remboursement FLOAT,
+    timestamp VARCHAR(30)
 )
