@@ -43,6 +43,18 @@ public class DatabaseOperations {
         Password = password;
     }
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public void setStatement(Statement statement) {
+        this.statement = statement;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
     public String getServer() {
         return server;
     }
@@ -62,7 +74,7 @@ public class DatabaseOperations {
     public ResultSet ExecuteQuery(String Query) throws SQLException {
         this.statement = this.connection.createStatement();
         ResultSet result = this.statement.executeQuery(Query);
-        //this.connection.close();
+        this.connection.close();
         return result;
     }
 
