@@ -9,7 +9,7 @@ CREATE TABLE users_db.User
     email VARCHAR(255),
     tel_num VARCHAR(30),
     id_remboursement INT,
-    code_soin VARCHAR(6), 
+    code_soin VARCHAR(10),
     montant_remboursement FLOAT,
     timestamp VARCHAR(30)
 )
