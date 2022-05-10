@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+    web:
+        image: lavoweb/php-5.6
+        ports:
+            - "80:80"
+        volumes:
+            - ./www:/var/www/html
+        links:
+            - db:db
+    db:
+        image: mysql:5.5
+        volumes:
+            - ./mysql:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+    myadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8080:80"
+        environment:
+            - max_execution_time=600
+            - max_input_time=600
+            - UPLOAD_LIMIT=2048M
+            - MEMORY_LIMIT=2048M
+            - max_allowed_packet=1024M
+        links:
+            - db:db
