@@ -1,11 +1,14 @@
 package db_mangament;
 
 import com.sun.jdi.IntegerValue;
+import file_management.FileMover;
 import utils.StringToUnixTmstp;
 import utils.TimeStampFinder;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.Locale;
@@ -39,8 +42,9 @@ public class InsertFileInUserTable {
             assert inputStream != null;
             InputStreamReader isr = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             BufferedReader br = new BufferedReader(isr);
-            br.lines().skip(1).forEach(line -> {
-                try {
+            try {
+
+                    br.lines().skip(1).forEach(line -> {
                     //System.out.println(line);
                     String[] data = line.split(",");
                     String ssn = data[0];
@@ -52,6 +56,7 @@ public class InsertFileInUserTable {
                     Integer id_remboursement = Integer.valueOf(data[6]);
                     String code_soin = data[7];
                     Float montant_remboursement = Float.valueOf(data[8]);
+
                     try {
                         statement.setString(1, ssn);
                         statement.setString(2, nom);
@@ -86,12 +91,23 @@ public class InsertFileInUserTable {
                     } else {
                         System.out.println("failed to add");
                     }
-                }catch (ClassCastException ex){
-                    ex.printStackTrace();
-                }
             });
+            }catch (NumberFormatException ex){
+                inputStream.close();
+                System.out.println("error catched");
+                File path_to_file = new File(fp);
+                FileMover fmv = new FileMover(path_to_file.getName(),
+                        path_to_file.getPath(),
+                        ".\\ressources\\problematicData\\"
+                );
+                fmv.move();
+                System.out.println(ex);
+                return;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
