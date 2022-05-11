@@ -92,6 +92,13 @@ public class InsertFileInUserTable {
                         System.out.println("failed to add");
                     }
             });
+                inputStream.close();
+                File path_to_file = new File(fp);
+                FileMover fmv = new FileMover(path_to_file.getName(),
+                        path_to_file.getPath(),
+                        ".\\ressources\\computedData\\"
+                );
+                fmv.move();
             }catch (NumberFormatException ex){
                 inputStream.close();
                 System.out.println("error catched");
@@ -109,6 +116,5 @@ public class InsertFileInUserTable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
