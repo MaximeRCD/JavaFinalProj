@@ -34,6 +34,16 @@ public class db_connect {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        InsertFileInUserTable ifut2 = new InsertFileInUserTable("C:\\Users\\maxim\\TélécomST\\Cours\\DE2\\DEV\\Final_Project\\ressources\\inputData\\user_20200125021721.csv");
+        ifut2.InsertInUserTable();
+
+        InsertFileInUserTable ifut1 = new InsertFileInUserTable("C:\\Users\\maxim\\TélécomST\\Cours\\DE2\\DEV\\Final_Project\\ressources\\inputData\\user_20210606220136.csv");
+        ifut1.InsertInUserTable();
+
+
+
+
     }
 }
 
