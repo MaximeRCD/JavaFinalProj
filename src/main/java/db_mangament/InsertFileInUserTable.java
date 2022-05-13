@@ -1,18 +1,13 @@
 package db_mangament;
 
-import com.sun.jdi.IntegerValue;
 import file_management.FileMover;
 import utils.StringToUnixTmstp;
 import utils.TimeStampFinder;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.*;
 import java.text.ParseException;
-import java.util.Locale;
-
 
 public class InsertFileInUserTable {
 
