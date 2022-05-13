@@ -30,8 +30,8 @@ public class db_connect {
         It is then placed in computed data folder
         */
 
-//        InsertFileInUserTable ifut1 = new InsertFileInUserTable(".\\ressources\\inputData\\user_20200125021721.csv");
-//        ifut1.InsertInUserTable();
+        InsertFileInUserTable ifut1 = new InsertFileInUserTable(".\\ressources\\inputData\\user_20200125021721.csv");
+        ifut1.InsertInUserTable();
 
 
         /*
@@ -44,10 +44,10 @@ public class db_connect {
 
         /* Test folder scanner class */
 
-        FolderScanner fs = new FolderScanner(".\\ressources\\inputData\\");
-        String test[] = fs.list_dir();
-        Arrays.stream(test).toList().forEach(System.out::println);
-        System.out.println(test[0]);
+//        FolderScanner fs = new FolderScanner(".\\ressources\\inputData\\");
+//        String test[] = fs.list_dir();
+//        Arrays.stream(test).toList().forEach(System.out::println);
+//        System.out.println(test[0]);
 
     }
 }
