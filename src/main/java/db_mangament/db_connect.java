@@ -30,7 +30,7 @@ public class db_connect {
         It is then placed in computed data folder
         */
 
-        InsertFileInUserTable ifut1 = new InsertFileInUserTable(".\\ressources\\inputData\\user_20200125021721.csv");
+        InsertFileInUserTable ifut1 = new InsertFileInUserTable(".\\ressources\\inputData\\");
         ifut1.InsertInUserTable();
 
 
@@ -47,7 +47,6 @@ public class db_connect {
 //        FolderScanner fs = new FolderScanner(".\\ressources\\inputData\\");
 //        String test[] = fs.list_dir();
 //        Arrays.stream(test).toList().forEach(System.out::println);
-//        System.out.println(test[0]);
 
     }
 }
