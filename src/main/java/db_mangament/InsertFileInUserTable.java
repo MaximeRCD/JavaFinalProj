@@ -8,6 +8,14 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.text.ParseException;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
 public class InsertFileInUserTable {
 
@@ -21,11 +29,23 @@ public class InsertFileInUserTable {
         FilePath = filePath;
     }
 
+    private void execSqlFile(DatabaseOperations con) throws FileNotFoundException {
+        //Initialize the script runner
+        ScriptRunner sr = new ScriptRunner(con.getConnection());
+        //Creating a reader object
+        Reader reader = new BufferedReader(new FileReader(".\\my_sql_db\\user_db.sql"));
+        //Running the script
+        sr.runScript(reader);
+    }
+
     public void InsertInUserTable(){
         String fp = this.getFilePath();
         try {
             // Connexion to database
-            DatabaseOperations db_ops = new DatabaseOperations("localhost:3306", "users_db", "root", "root");
+            DatabaseOperations db_check = new DatabaseOperations("localhost:3306","","root","");
+            DatabaseOperations db_ops = new DatabaseOperations("localhost:3306", "users_db", "root", "");
+
+
             String sql = "INSERT INTO User (ssn, nom, prenom, date_naissance, email, tel_num, id_remboursement, code_soin, montant_remboursement, timestamp) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement statement = db_ops.getConnection().prepareStatement(sql);
             InputStream inputStream = null;
@@ -104,7 +124,6 @@ public class InsertFileInUserTable {
                 );
                 fmv.move();
                 System.out.println(ex);
-                return;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
