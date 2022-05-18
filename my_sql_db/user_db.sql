@@ -1,5 +1,5 @@
 CREATE  DATABASE IF NOT EXISTS `users_db`;
-CREATE TABLE users_db.User
+CREATE TABLE IF NOT EXISTS users_db.User
 (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     ssn VARCHAR(30), -- social security number
@@ -12,4 +12,4 @@ CREATE TABLE users_db.User
     code_soin VARCHAR(10),
     montant_remboursement FLOAT,
     timestamp VARCHAR(30)
-)
+);
