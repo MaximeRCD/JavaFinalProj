@@ -1,0 +1,11 @@
+ssn,prenom,nom,date_naissance,email,numero_telephone,id_remboursement,code_soin,montant_remboursement
+120029205078157,Laurent,Paul,1986-08-14,laurent.paul940@caron.org,+33 3 62 18 83 13,9895,L00–L99,32.81818181818182
+220046912320813,Robert,Denis,1994-01-03,robert.denis510@herve.net,+33 4 42 95 20 55,6967,F00–F99,63.57142857142857
+211060810543620,Anne,Lombard,1954-05-06,anne.lombard863@bourgeois.org,0518977905,7237,S00–T98,32.0
+187073417286610,Jean,Pereira,1970-11-24,jean.pereira907@clement.com,+33 2 34 56 02 47,2433,H60–H95,49.3
+181041927240463,Madeleine,Henry,1957-10-31,madeleine.henry634@barthelemy.net,0381257010,9201,S00–T98,37.5
+199114809574089,Lucas,Roy,1955-09-09,lucas.roy149@prevost.com,+33 (0)3 89 25 95 40,3812,C00–D48,7.684210526315789
+279015313090591,Jacqueline,Leduc,1984-12-06,jacqueline.leduc886@chauveau.fr,+33 (0)5 82 51 66 67,6202,A00–B99,14.4
+257079205078615,Catherine,Letellier,1951-02-16,catherine.letellier357@vallee.fr,+33 2 58 31 27 57,9215,U00–U99,34.625
+287077306508585,Maggie,Mahe,1932-05-26,maggie.mahe41@camus.fr,05 34 14 38 39,3642,H60–H95,29.11764705882353
+295126613614404,Charles,Thierry,1942-06-10,charles.thierry165@boucher.com,+33 3 55 78 85 90,3103,F00–F99,56.07142857142857

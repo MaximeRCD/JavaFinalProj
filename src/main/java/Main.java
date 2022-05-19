@@ -47,6 +47,7 @@ public class db_connect {
 //        FolderScanner fs = new FolderScanner(".\\ressources\\inputData\\");
 //        String test[] = fs.list_dir();
 //        Arrays.stream(test).toList().forEach(System.out::println);
+//        System.out.println(test[0]);
 
     }
 }
