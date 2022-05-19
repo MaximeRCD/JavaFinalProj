@@ -137,7 +137,7 @@ public class InsertFileInUserTable {
                             ".\\ressources\\computedData\\"
                     );
                     fileMover.move();
-                } catch (NumberFormatException ex) {
+                } catch (Exception ex) {
                     inputStreamFile.close();
                     System.out.println("error catched");
                     File path_to_file = new File(folderPath + file);
