@@ -1,11 +1,15 @@
 package db_mangament;
 
+import com.mysql.cj.xdevapi.JsonArray;
+import com.mysql.cj.xdevapi.JsonParser;
 import file_management.FileMover;
 import file_management.FolderScanner;
 import utils.StringToUnixTmstp;
 import utils.TimeStampFinder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,12 +17,19 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.InputStream;
+
 public class db_connect {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException, ParseException {
         /* Test connexion */
 
 //        DatabaseOperations a = new DatabaseOperations("localhost:3306", "users_db", "root", "root");
@@ -48,7 +59,18 @@ public class db_connect {
 //        String test[] = fs.list_dir();
 //        Arrays.stream(test).toList().forEach(System.out::println);
 
+        /* Test JSON Read file*/
+//        File file = new File(".\\ressources\\inputData\\user_20210219092753.json");
+//        String content = new String(Files.readAllBytes(Paths.get(file.toURI())));
+//        JSONObject jsonContent = new JSONObject(content);
+//        String[] tab = jsonContent.toString().split("},");
+//        for(int i = 0; i<tab.length;i++){
+//            JSONObject jsonBackground = jsonContent.getJSONObject(String.valueOf(9));
+//            System.out.println(Float.valueOf(jsonBackground.get("montant_remboursement").toString()));
+
+ //       }
     }
 }
+
 
 

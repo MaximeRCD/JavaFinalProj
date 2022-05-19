@@ -78,34 +78,6 @@ public class DatabaseOperations {
         return result;
     }
 
-    public ResultSet GetUniqueManagers() throws SQLException {
-        if (this.connection.isClosed()) {
-            this.connection = DriverManager.getConnection(
-                    "jdbc:mysql://" + this.server + "/" + this.database, this.User, this.Password);
-            this.statement = this.connection.createStatement();
-        }
-        ResultSet result = this.ExecuteQuery("SELECT COUNT(DISTINCT MANAGER_ID) FROM employees");
-        while (result.next()) {
-            System.out.println(result.getInt(1));
-        }
-        this.connection.close();
-        return result;
-    }
-
-    public ResultSet GetEmployeesWith10000Salary() throws SQLException {
-        if (this.connection.isClosed()) {
-            this.connection = DriverManager.getConnection(
-                    "jdbc:mysql://" + this.server + "/" + this.database, this.User, this.Password);
-            this.statement = this.connection.createStatement();
-        }
-        ResultSet result = this.ExecuteQuery("SELECT count(*) from employees WHERE SALARY > 10000");
-        while (result.next()) {
-            System.out.println(result.getInt(1));
-        }
-        this.connection.close();
-        return result;
-    }
-
     public ResultSet GetDepartmentsWithCommission() throws SQLException {
         if (this.connection.isClosed()) {
             this.connection = DriverManager.getConnection(
