@@ -31,3 +31,8 @@ hs_err_pid*
 # Maven
 log/
 target/
+
+# properties
+*.properties
+
+
