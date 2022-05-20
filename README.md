@@ -60,6 +60,10 @@ Les livrables attendus via Mootse ou WeTransfer sont :
 
 #### 3.1 - Choix d'implémentation
 
+#### 3.1.0 Création des données
+
+Il y a un notebook python qui nous a permis de créer des données fictives utilisées pour créer les fichiers csv et json.
+
 #### 3.1.1 Gestion des accès concurentiel aux fichiers.
 
 Lors du developpement de l'insertion des lignes d'un fichier dans la base. Nous nous sommes heurté au problème d'accès concurentiel par deux thread différents sur la JVM lorsque nous voulions déplacer le fichier traité dans le folder correspondant. 
