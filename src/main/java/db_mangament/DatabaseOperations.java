@@ -1,8 +1,12 @@
 package db_mangament;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class DatabaseOperations {
     private String server;
@@ -15,6 +19,7 @@ public class DatabaseOperations {
     public java.sql.Statement getStatement() {
         return statement;
     }
+
 
     public DatabaseOperations(String server, String database, String user, String password) throws SQLException {
         this.server = server;
@@ -77,5 +82,6 @@ public class DatabaseOperations {
         this.connection.close();
         return result;
     }
+
 
 }

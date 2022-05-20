@@ -1,5 +1,7 @@
 package db_mangament;
 
+import environment_setter.EnvironmentReader;
+import environment_setter.PropertyLoader;
 import file_management.FileMover;
 import file_management.FolderScanner;
 import utils.StringToUnixTmstp;
@@ -18,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
 /**
@@ -79,13 +82,36 @@ public class InsertFileInUserTable {
         String folderPath = this.getScannedFolderPath();
         String[] scannedContent = this.getScannedFolderContent();
 
+
         try {
+            // Lecture du fichier properties
+
+            PropertyLoader propertyLoader = new PropertyLoader();
+            Properties properties = propertyLoader.getDbConnexionDetails();
+
+            EnvironmentReader environmentReader = new EnvironmentReader(
+                    properties.getProperty("environment"),
+                    properties.getProperty("server"),
+                    properties.getProperty("db_name"),
+                    properties.getProperty("user_name"),
+                    properties.getProperty("password"));
+
             // Test de l'existence de la base et création de la base et de la sinon.
-            DatabaseOperations db_check = new DatabaseOperations("localhost:3306", "", "root", "root");
+
+
+            DatabaseOperations db_check = new DatabaseOperations(
+                    environmentReader.getServer(),
+                    "",
+                    environmentReader.getUser_name(),
+                    environmentReader.getPassword());
             execSqlFile(db_check);
 
             // Connexion à la base.
-            DatabaseOperations db_ops = new DatabaseOperations("localhost:3306", "users_db", "root", "root");
+            DatabaseOperations db_ops = new DatabaseOperations(
+                    environmentReader.getServer(),
+                    environmentReader.getDb_name(),
+                    environmentReader.getUser_name(),
+                    environmentReader.getPassword());
 
             String sqlUpdate = "UPDATE User SET ssn = ?, nom = ?, prenom = ?, date_naissance = ?, email = ?, tel_num = ?, code_soin = ?, montant_remboursement = ?, timestamp= ? WHERE id_remboursement = ?;";
             String sqlInsert = "INSERT INTO User (ssn, nom, prenom, date_naissance, email, tel_num, id_remboursement, code_soin, montant_remboursement, timestamp) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
