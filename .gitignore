@@ -35,4 +35,5 @@ target/
 # properties
 *.properties
 
-
+# docker mysql
+my_sql_db/mysql/*
