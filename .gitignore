@@ -37,3 +37,6 @@ target/
 
 # docker mysql
 my_sql_db/mysql/*
+
+# Empty files to init folders
+*file.txt

@@ -30,22 +30,10 @@ public class EnvironmentReader {
     }
 
     public EnvironmentReader(String environment, String server, String db_name, String user_name, String password) {
-        if(!environment.equals("docker"))
-        {
             this.environment = environment;
             this.server = server;
             this.db_name = db_name;
             this.user_name = user_name;
-            this.password = "";
-        }else{
-            this.environment = "docker";
-            this.server = server;
-            this.db_name = db_name;
-            this.user_name = user_name;
             this.password = password;
-        }
-
-
-
     }
 }

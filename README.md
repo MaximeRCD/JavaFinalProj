@@ -4,7 +4,25 @@
 
 ### 1 - Installation:
 
+Récupérer le projet via la commande :
+
+`git clone https://github.com/MaximeRCD/JavaFinalProj.git`
+
 ### 2 - Lancement du projet:
+
+Il y a un fichier db_settings.properties qu'il faut modifier selon l'environnement depuis lequel on accède à la base de données.
+
+Il est composé de 5 champs :
+- environment : < environement qui héberge la bdd >.
+- server : localhost:3306
+- db_name : users_db
+- user_name : root
+- password : root
+
+Il suffit de préciser l'ensemble des ces cinqs paramètres pour pouvoir lancé le code correctement.
+
+
+Lancer la classe main en laissant commenté la partie qui l'est. Elle sert à replacer automatiquement les fichiers traités par une exécution précédente dans le dossier à traité.
 
 ### 3 - Retour d'expérience:
 #### 3.0 - Sujet
@@ -24,7 +42,6 @@ Le but du projet est de développer un programme batch java qui devra implément
 - les lignes en erreur (format incorrect) sont déplacés dans un dossier de rejet, dans un fichier avec le timestamp du fichier d'origine
 
 - optionnel : les fichiers users_<YYYYMMDDHHmmSS>.json peuvent également être supportés.
-- 
 
 #### 3.0.1 - Stack technique
 
@@ -51,7 +68,22 @@ Une conséquence faisant suite à cette difficulté à été de choisir d'avoir 
 Si ce n'est pas la première ligne alors on risque de d'insérer plusieurs fois des lignes dans la base mais cela est gérer par la faculter à update des données si l'id_remboursement est le même.
 Cela nous permettait de limiter les ouvertures et fermetures de flux vers le fichier à traiter.
 
+#### 3.1.2 Gestion des propriétes de connexion.
+
+Nous avons choisi d'inscrire les propriétes de connexion à la base de données car nous ne travaillions pas depuis le même environnement.
+Elyes via WAMP et Maxime via docker, qui ne requièrent pas les mêmes propriétés. 
+Ainsi, en ajoutant le fichier .properties au .gitignore, chacun pouvait récupérer le code avec ses propres identifiants de connexion et travailler sur des environnements différents.
+
 
 #### 3.2 - Améliorations à apporter
 
 Gérer l'ingestion par ligne et non par fichier.
+
+Ajouter des paramètres en ligne de commande à l'objet main du type : 
+--ingest_data : pour lancer la partie du code qui ingère les données.
+--input-data_folder <folder_path>
+--problematic_data_folder <folder_path>
+--computed_data_folder <folder_path>
+pour retirer l'ensemble des chemins encore en dur dans le code et ainsi pouvoir le lancer sur n'importe quel environnement.
+
+--put_data_back : pour exécuter la seconde partie (commenté) du main qui s'occupe de remettre les fichiers déplacés par une exécution précédente dans le dossier input_data.
